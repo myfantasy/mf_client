@@ -1,0 +1,38 @@
+{
+    "files": [
+        "mf_vue_static\\css\\app.css",
+        "mf_vue_static\\js\\app.js",
+        "mf_vue_static\\js\\manifest.js",
+        "mf_vue_static\\js\\vendor.js",
+        "mf_vue_static\\logs.js",
+
+        //"mf_vue_static\\lib\\jquery.min.js",
+    
+        //"mf_vue_static\\lib\\materialize-css\\fonts\\roboto\\Roboto-Bold.woff",
+        //"mf_vue_static\\lib\\materialize-css\\fonts\\roboto\\Roboto-Bold.woff2",
+        //"mf_vue_static\\lib\\materialize-css\\fonts\\roboto\\Roboto-Light.woff",
+        //"mf_vue_static\\lib\\materialize-css\\fonts\\roboto\\Roboto-Light.woff2",
+        //"mf_vue_static\\lib\\materialize-css\\fonts\\roboto\\Roboto-Medium.woff",
+        //"mf_vue_static\\lib\\materialize-css\\fonts\\roboto\\Roboto-Medium.woff2",
+        //"mf_vue_static\\lib\\materialize-css\\fonts\\roboto\\Roboto-Regular.woff",
+        //"mf_vue_static\\lib\\materialize-css\\fonts\\roboto\\Roboto-Regular.woff2",
+        //"mf_vue_static\\lib\\materialize-css\\fonts\\roboto\\Roboto-Thin.woff",
+        //"mf_vue_static\\lib\\materialize-css\\fonts\\roboto\\Roboto-Thin.woff2",
+        //"mf_vue_static\\lib\\materialize-css\\css\\materialize.min.css",
+        //"mf_vue_static\\lib\\materialize-css\\js\\materialize.min.js",
+        //"mf_vue_static\\lib\\mdi\\css\\materialdesignicons.min.css",
+        //"mf_vue_static\\lib\\mdi\\fonts\\materialdesignicons-webfont.eot",
+        //"mf_vue_static\\lib\\mdi\\fonts\\materialdesignicons-webfont.svg",
+        //"mf_vue_static\\lib\\mdi\\fonts\\materialdesignicons-webfont.ttf",
+        //"mf_vue_static\\lib\\mdi\\fonts\\materialdesignicons-webfont.woff",
+        //"mf_vue_static\\lib\\mdi\\fonts\\materialdesignicons-webfont.woff2"
+
+    
+    ],
+    "templates": [
+        {
+         "name": "mp",
+          "file": "index.html"
+        }
+    ]
+}

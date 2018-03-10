@@ -3,8 +3,8 @@
         <div class="flexRowBWStretch">
             <h1>Жанры</h1>
             <div class="actions_area">
-                <materialbutton type='flat' onclick="expandAll($('#genresList'));">Раскрыть все</materialbutton>
-                <materialbutton type='flat' onclick="collapseAll($('#genresList'));">Свернуть все</materialbutton>
+                <materialbutton type='flat' v-on:click="expand()">Раскрыть все</materialbutton>
+                <materialbutton type='flat' v-on:click="collapse()">Свернуть все</materialbutton>
 
             </div>
         </div>
@@ -72,13 +72,47 @@ export default {
             .catch(error => showError(this.$options.name, 'refreash', 'Не удалось загрузить жанры', error));
 
         
+        },
+        expand(){
+            expandAll($(this.$refs.ul));
+        },
+        collapse(){
+            collapseAll($(this.$refs.ul));
         }
     },
     mounted(){
         this.refreash();
 
     }
-}
+};
+
+    function expandAll(root) {
+
+        $.each(root.children(), function (index, itm) {
+            if (!$(itm).hasClass('active')) {
+                root.collapsible('open', index);
+            }
+
+            $.each($(itm).find(".collapsible"), function (index, rootItm) {
+                expandAll($(rootItm));
+            });
+        });
+
+    }
+    function collapseAll(root) {
+        $.each(root.children(), function (index, itm) {
+            if ($(itm).hasClass('active')) {
+                root.collapsible('close', index);
+            }
+
+            $.each($(itm).find(".collapsible"), function (index, rootItm) {
+                collapseAll($(rootItm));
+            });
+        });
+    }
+
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

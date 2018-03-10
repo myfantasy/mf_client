@@ -5,6 +5,7 @@ import HelloWorld from '@/components/HelloWorld'
 import library_mp from '@/components/library/library master page.vue'
 import login from '@/components/library/login.vue'
 import genres from '@/components/library/genres.vue'
+import profile from '@/components/library/profile.vue'
 
 
 
@@ -28,6 +29,11 @@ export default new Router({
           path: 'genres',
           name:'genres',
           component: genres
+        },
+        {
+          path: 'profile',
+          name:'profile',
+          component: profile
         },
       ]
     },

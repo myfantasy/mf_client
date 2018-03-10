@@ -1,11 +1,13 @@
 export default {
-    "/admin/library/users/get_current_user.json"(){
-        return {
-            'current_user':{
-                id: 1010123,
-                name: 'Alice'
-            }
-        };
+    "/user/login.json"(){
+        return {"is_ok":true,"err_code":1,"err_text":"Не нашлось сочетания логин и пароль", "user_id":324324};
+    },
+    "/user/get_user.json?id=324324"(){
+        return {"is_ok":true, 'user':{
+            id:324324,
+            title:'',
+
+        }};
     }
 
 

@@ -29,26 +29,31 @@
             </div>
         </div>
 
+
         <div class="header_right">
-            <button v-on:click="testMethod">test</button>
-            <router-link to="/login">Вход/Регистрация</router-link>
+            <router-link to="/login" v-if="current_user.is_logged_in == false">Вход/Регистрация</router-link>
 
             <button class="header-notification-none-btn tooltipped hide" data-position="bottom" data-delay="50" data-tooltip="Пока уведомлений нет"></button>
             <button class="header-notification-btn dropdown-button hide" data-activates='moreActions1'></button>
 
-            <button type="button" class="dropdown-button hide"
-                    data-activates="currentUser-miniActions"
+            <button type="button" 
+                    v-show="current_user.is_logged_in == true"
+                    ref='current_user_mini_actions_btn_activator'
+                    data-activates='currentUser_miniActions'
+                    class="dropdown-button"
                     data-beloworigin="true"
                     data-constrainWidth="false"
+                    data-alignment="right"
                     data-gutter="0">
-                <span>Alice</span> <img src="images/alice.png" class="user-icon-circle" />
+                <span>{{current_user.title ? current_user.title : 'Читатель'}}</span> <img src="images/alice.png" class="user-icon-circle" v-if="current_user.picture != null" />
+                <i class="mdi mdi-36px mdi-account-circle empty_avatar"></i>
             </button>
 
-            <ul id='currentUser-miniActions' class='dropdown-content'>
+            <ul id='currentUser_miniActions' class='dropdown-content'>
                 <li><a href="#"><i class="material-icons">perm_identity</i>Мой профиль</a></li>
                 <li><a href="#"><i class="material-icons">settings</i>Мои настройки</a></li>
                 <li class="divider"></li>
-                <li><a href="#"><i class="material-icons">exit_to_app</i>Выход</a></li>
+                <li><button v-on:click="logout()"><i class="material-icons">exit_to_app</i>Выход</button></li>
             </ul>
         </div>
       </header>
@@ -64,7 +69,7 @@
                     <li><a href="#"><i class="material-icons">close</i>Lib.rus.ec</a></li>
                 </ul>
                 <ul>
-                    <li class="active"><a href="mp.html?page=MyProfile"><i class="material-icons">perm_identity</i>Моя страница</a></li>
+                    <li class="active"><router-link :to="{name:'profile'}"><i class="material-icons">perm_identity</i>Моя страница</router-link></li>
                     <li><a href="#"><i class="material-icons">group</i>Друзья</a></li>
                     <li><a href="#"><i class="material-icons">message</i>Сообщения</a></li>
                     <li><a href="#"><i class="material-icons">track_changes</i>Подписки</a></li>
@@ -87,7 +92,9 @@
                 <ul>
                     <li><a href="#"><i class="material-icons">add</i>Создать полку</a></li>
                 </ul>
+                <div style="color:red;">page name:{{inner_page_name}}</div>
             </nav>
+            
         </div>
         <div class="main_center">
             <nav class="content-type-nav">
@@ -100,7 +107,7 @@
                     <li class="tab"><a href="#test6">Игры Слов</a></li>
                 </ul>
             </nav>
-            <router-view />
+            <router-view ref='inner_page'/>
         </div>
         <div class="main_aside">
             <button onclick="$('body').removeClass('BlueTheme').removeClass('GreenTheme').addClass('OrangeTheme');">Orange</button>
@@ -140,13 +147,28 @@ export default {
   name: "AdminMasterPage",
   data() {
     return {
-      connection_state: data_provider.state
+      connection_state: data_provider.state,
+      current_user : User.get_current_user(),
+      inner_page_name:'',
     };
   },
   computed: {
-
+      //current_user(){
+      //    return User.get_current_user();
+      //}
+      //inner_page_name(){
+      //    if(this.$refs.inner_page != null && this.$refs.inner_page.$options != null)
+      //      return this.$refs.inner_page.$options.name;
+      //    return '';
+      //}
   },
   methods: {
+    logout(){
+        User.logout()
+        .then(res => showGoodMessage('vue mp', 'logout', 'Вы вышли из системы'))
+        .catch(error=> showError('vue mp', 'logout', error.err_text, error));
+    },
+
     testMethod() {
       var u1 = new User("name 1");
       console.log("vue control call");
@@ -160,9 +182,15 @@ export default {
   },
   mounted() {
     $("#side-left-menu-activate").sideNav();
-      $(this.$refs.update_button).tooltip({tooltip: 'Обновить'});
+    $(this.$refs.update_button).tooltip({tooltip: 'Обновить'});
+    $(this.$refs.current_user_mini_actions_btn_activator).dropdown();
+
+    console.log(this.$refs.inner_page.$options.name);
   },
   watch: {
+    '$route'(to, from){
+        this.inner_page_name = this.$refs.inner_page.$options.name;
+    },
     'connection_state.is_connection_problems'(to, from) {
         var update_btn = this.$refs.update_button;
 
@@ -191,5 +219,11 @@ export default {
       visibility: visible;
     }
   }
+}
+.empty_avatar{
+    margin-left: 15px;
+    height: 42px;
+    width: 42px;
+    line-height: 42px;
 }
 </style>
