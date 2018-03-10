@@ -1,0 +1,81 @@
+.flexRowBWStretch{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.flexColStartStretch{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.flexColCenterCenter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.grow{
+    flex-grow: 1;
+}
+
+.material_icons{
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+
+.errortoast{
+    background: #9E0000;
+    color: white;
+    border-radius: 24px;
+    &:before{
+        content: "error_outline";
+        .material_icons();
+        margin-right: 15px;
+    }
+}
+
+.successtoast{
+    background: rgb(0, 100, 0);
+    color: white;
+    border-radius: 24px;
+    &:before{
+        content: "done";
+        .material_icons();
+        margin-right: 15px;
+    }
+}
+
+.panel {
+    .z-depth-1;
+    background-color: white;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:stretch;
+    flex-grow:0;
+    margin-left:10px;
+    margin-right:10px;
+    margin-top:25px;
+    margin-bottom:25px;
+    h3{
+        align-self:center;
+        font-size: 24px;
+    }
+}

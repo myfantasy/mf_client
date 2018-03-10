@@ -1,0 +1,229 @@
+@import (reference) 'variables.less';
+
+.raised_btn {
+    border-radius: 2px;
+    -webkit-tap-highlight-color: transparent;
+    background-color: @main-color;
+    color: @white-color;
+    //font-size: 18px;
+    text-decoration: none;
+    transition: background-color .3s;
+    cursor: pointer;
+    position: relative;
+
+    input[type=file] {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        cursor: pointer !important;
+    }
+
+    &:link {
+        color: @white-color;
+    }
+
+    &:visited {
+        color: @white-color;
+    }
+
+    &:hover {
+        text-decoration: none;
+        outline: none;
+        color: @white-color;
+        background-color: @main-color-hover;
+    }
+
+    &:focus {
+        outline: none;
+        color: @white-color;
+        background-color: @main-color-hover;
+    }
+
+    &.disabled {
+        pointer-events: none;
+        background-color: #DFDFDF !important;
+        box-shadow: none;
+        color: #9F9F9F !important;
+        cursor: default;
+    }
+
+    &.gray {
+        background-color: #d2d2d2 !important;
+        color: black !important;
+
+        &::before {
+        }
+
+        &:hover {
+            text-decoration: none;
+            outline: none;
+            background-color: #bebebe !important;
+        }
+
+        &:focus {
+            outline: none;
+            background-color: #bebebe !important;
+        }
+
+        &:link {
+            color: black !important;
+        }
+
+        &:visited {
+            color: black !important;
+        }
+    }
+
+    &.green {
+        background-color: #4CAF50 !important;
+        color: white !important;
+
+        &::before {
+        }
+
+        &:hover {
+            text-decoration: none;
+            outline: none;
+            background-color: darken(#4CAF50, @color-hover-darken) !important;
+        }
+
+        &:focus {
+            outline: none;
+            background-color: darken(#4CAF50, @color-hover-darken) !important;
+        }
+
+        &:link {
+            color: white !important;
+        }
+
+        &:visited {
+            color: white !important;
+        }
+    }
+
+    &.telegram {
+        background-color: rgb(32, 160, 255) !important;
+        color: white !important;
+        /*&::before {
+            .materialIcon;
+            font-size: 24px;
+            content: "send";
+        }*/
+        i {
+            font-size: 24px;
+        }
+
+        &:hover {
+            text-decoration: none;
+            outline: none;
+            background-color: darken(rgb(32, 160, 255), @color-hover-darken) !important;
+        }
+
+        &:focus {
+            outline: none;
+            background-color: darken(rgb(32, 160, 255), @color-hover-darken) !important;
+        }
+
+        &:link {
+            color: white !important;
+        }
+
+        &:visited {
+            color: white !important;
+        }
+    }
+
+    &.whatsapp {
+        background-color: rgb(30, 190, 165) !important;
+        color: white !important;
+        /*&::before {
+     
+            font-size: 24px;
+            content: '<i class="fa fa-whatsapp" aria-hidden="true"></i>';
+        }*/
+        i {
+            font-size: 24px;
+        }
+
+        &:hover {
+            text-decoration: none;
+            outline: none;
+            background-color: darken(rgb(30, 190, 165), @color-hover-darken) !important;
+        }
+
+        &:focus {
+            outline: none;
+            background-color: darken(rgb(30, 190, 165), @color-hover-darken) !important;
+        }
+
+        &:link {
+            color: white !important;
+        }
+
+        &:visited {
+            color: white !important;
+        }
+    }
+
+    &.vkontakte {
+        background-color: #507299 !important;
+        color: white !important;
+        /*&::before {
+     
+            font-size: 24px;
+            content: '<i class="fa fa-whatsapp" aria-hidden="true"></i>';
+        }*/
+        i {
+            font-size: 24px;
+        }
+
+        &:hover {
+            text-decoration: none;
+            outline: none;
+            background-color: darken(#507299, @color-hover-darken) !important;
+        }
+
+        &:focus {
+            outline: none;
+            background-color: darken(#507299, @color-hover-darken) !important;
+        }
+
+        &:link {
+            color: white !important;
+        }
+
+        &:visited {
+            color: white !important;
+        }
+    }
+}
+
+.ui_link{
+    border: none;
+    background: none;
+    color:@ui-link-color;
+
+    &:link {
+        color: @ui-link-color;
+    }
+
+    &:visited {
+        color: @ui-link-color;
+    }
+
+    &:hover {
+        color: lighter(@ui-link-color, @color-hover-darken);
+    }
+
+    &:focus {
+        color: lighter(@ui-link-color, @color-hover-darken);
+        border: 1px dotted lighter(@ui-link-color, @color-hover-darken);
+    }
+}

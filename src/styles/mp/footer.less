@@ -1,0 +1,71 @@
+@import (reference) '../variables.less';
+
+footer {
+    background-color: @main-color;
+    color: @white-color;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-content: stretch;
+    .transitionBGColorForTheme();
+
+    nav {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        align-self: center;
+        width: 900px;
+        display: flex;
+        justify-content: space-around;
+        align-items: stretch;
+        height: auto;
+        line-height: normal;
+        margin: 10px;
+    }
+
+    menu {
+        list-style: none;
+        padding: 10px;
+        box-sizing: border-box;
+
+        li {
+            line-height: 18px;
+            margin: 5px;
+        }
+
+        a {
+            font-size: 14px;
+            color: @white-color;
+            text-decoration: none;
+
+            &:hover {
+                color: @white-color;
+                border-bottom: 0px;
+                text-decoration: underline;
+            }
+
+            &:link {
+                color: @white-color;
+            }
+
+            &:visited {
+                color: @white-color;
+            }
+        }
+    }
+}
+
+
+.footer-copyright {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    align-self: stretch;
+    font-size: 18px;
+    color: @white-color;
+    background-color: @main-color-deep;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    .transitionBGColorForTheme();
+}

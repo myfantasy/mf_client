@@ -1,0 +1,144 @@
+.apply_theme_controls(@main-color, @main-color-deep, @white-color, @black-color, @action-color){
+
+
+    .dropdown-content {
+        li {
+            &:hover {
+                a {
+                    color: @main-color;
+                }
+
+                i {
+                    color: @main-color;
+                }
+            }
+
+            a {
+                &:hover {
+                    color: @main-color;
+                }
+
+                i, img {
+                    &:hover {
+                        color: @main-color;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .raised_btn {
+        background-color: @main-color;
+
+        &:link {
+            color: @white-color;
+            background-color: @main-color;
+        }
+
+        &:visited {
+            color: @white-color;
+            background-color: @main-color;
+        }
+
+        &:hover {
+            color: @white-color;
+            background-color: darken(@main-color, @color-hover-darken);
+        }
+
+        &:focus {
+            outline: none;
+            color: @white-color;
+            background-color: darken(@main-color, @color-hover-darken);
+        }
+    }
+
+
+
+
+    /*#region inputs */
+    input:not([type]):focus:not([readonly]),
+    input[type=text]:focus:not([readonly]),
+    input[type=password]:focus:not([readonly]),
+    input[type=email]:focus:not([readonly]),
+    input[type=url]:focus:not([readonly]),
+    input[type=time]:focus:not([readonly]),
+    input[type=date]:focus:not([readonly]),
+    input[type=datetime]:focus:not([readonly]),
+    input[type=datetime-local]:focus:not([readonly]),
+    input[type=tel]:focus:not([readonly]),
+    input[type=number]:focus:not([readonly]),
+    input[type=search]:focus:not([readonly]),
+    textarea.materialize-textarea:focus:not([readonly]) {
+        border-bottom: 1px solid @main-color;
+        box-shadow: 0 1px 0 0 @main-color;
+    }
+
+    input:not([type]):focus:not([readonly]) + label,
+    input[type=text]:focus:not([readonly]) + label,
+    input[type=password]:focus:not([readonly]) + label,
+    input[type=email]:focus:not([readonly]) + label,
+    input[type=url]:focus:not([readonly]) + label,
+    input[type=time]:focus:not([readonly]) + label,
+    input[type=date]:focus:not([readonly]) + label,
+    input[type=datetime]:focus:not([readonly]) + label,
+    input[type=datetime-local]:focus:not([readonly]) + label,
+    input[type=tel]:focus:not([readonly]) + label,
+    input[type=number]:focus:not([readonly]) + label,
+    input[type=search]:focus:not([readonly]) + label,
+    textarea.materialize-textarea:focus:not([readonly]) + label {
+        color: @main-color;
+    }
+
+
+
+
+
+
+
+    [type="checkbox"]:checked + label:before {
+        border-right: 2px solid @main-color;
+        border-bottom: 2px solid @main-color;
+    }
+    /* Indeterminate checkbox */
+    [type="checkbox"]:indeterminate + label:before {
+        border-right: 2px solid @main-color;
+    }
+
+
+    [type="checkbox"].filled-in:checked + label:after {
+        border: 2px solid @main-color;
+        background-color: @main-color;
+    }
+
+    [type="checkbox"].filled-in.tabbed:checked:focus + label:after {
+        border-radius: 2px;
+        background-color: @main-color;
+        border-color: @main-color;
+    }
+
+    [type="radio"]:checked + label:after,
+    [type="radio"].with-gap:checked + label:before,
+    [type="radio"].with-gap:checked + label:after {
+        border: 2px solid @main-color;
+    }
+
+    [type="radio"]:checked + label:after,
+    [type="radio"].with-gap:checked + label:after {
+        background-color: @main-color;
+    }
+
+
+
+    input[type=range] + .thumb {
+        background-color: @main-color;
+    }
+
+    input[type=range] + .thumb .value {
+        color: @main-color;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+        background-color: @main-color;
+    }
+}

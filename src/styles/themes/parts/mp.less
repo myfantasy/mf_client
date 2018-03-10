@@ -1,0 +1,73 @@
+.apply_theme_mp(@main-color, @main-color-deep, @white-color, @black-color, @action-color){
+    header {
+        background-color: @main-color;
+    }
+
+    .header-center-rigth .switch label input[type=checkbox]:checked + .lever:after {
+        color: @main-color;
+    }
+
+    .header-center-rigth .switch label .lever {
+        background-color: @main-color-deep;
+    }
+
+    .header-center-rigth .switch label .lever:after {
+        background-color: @main-color;
+    }
+
+
+    footer {
+        background-color: @main-color;
+    }
+
+    .footer-copyright {
+        background-color: @main-color-deep;
+    }
+
+
+    .content-type-nav {
+        ul.tabs {
+            li.tab {
+                a {
+                    color: @main-color;
+                }
+            }
+
+            .indicator {
+                background-color: @main-color;
+            }
+        }
+    }
+
+    .content-type-filter {
+        li button {
+            color: @action-color;
+
+            &:after {
+                background: @main-color;
+            }
+
+            &.active {
+                color: @main-color;
+            }
+        }
+    }
+
+    .side-menu ul {
+        li {
+            &:hover {
+                color: @main-color;
+
+                a {
+                    color: @main-color;
+
+                    i {
+                        color: @main-color;
+                    }
+                }
+            }
+        }
+    }
+
+
+}

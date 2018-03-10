@@ -1,0 +1,280 @@
+@import (reference) '../variables.less';
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 56px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: @main-color;
+    color: @white-color;
+    box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+    .transitionBGColorForTheme();
+
+    a, button {
+        display: flex;
+        align-self: stretch;
+        align-items: center;
+        padding: 0 15px;
+        line-height: 100%;
+        font-size: 24px;
+        border: none;
+        color: @white-color;
+        background-color: transparent;
+        box-shadow: none;
+        transition: background-color .3s;
+        cursor: pointer;
+        span {
+            //заплатка для ipad
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            vertical-align: central;
+            pointer-events: none;
+        }
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+
+        &:focus {
+            background-color: rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+        &:link {
+            color: @white-color;
+        }
+
+        &:visited {
+            color: @white-color;
+        }
+    }
+
+    .header_left,
+    .header_right {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: stretch;
+        flex-basis: 300px;
+        flex-grow: 0;
+        flex-shrink: 0;        
+        box-sizing: border-box;
+    }
+
+    .header_left {
+        justify-content: flex-start;
+    }
+        
+    .header_right {
+        justify-content: flex-end;
+    }
+
+    .header_center {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-width: 100px;
+        max-width: 900px;
+        flex-basis: 300px;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+
+
+
+    a.logo,
+    a.minilogo{
+        display: flex;
+        text-decoration: none;
+        padding-left: 15px;
+        padding-right: 15px;
+        color: @white-color;
+        font-size: 36px;
+        vertical-align: central;
+    
+        &:hover {
+            color: @white-color;
+            border-bottom: 0px;
+        }
+    
+        &:link {
+            color: @white-color;
+        }
+    
+        &:visited {
+            color: @white-color;
+        }
+    }
+    a.logo {
+        display: flex;        
+    }
+    a.minilogo {
+        display: none;        
+    }
+
+
+
+    .search-panel {
+        display: flex;
+        flex-grow: 1;
+        height: 42px;
+        align-self: center;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.2);
+    
+        &:before {
+            .material_icon;
+            content: "search";
+            display: flex;
+            align-self: center;
+            font-size: 24px;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+    
+        input[type=search] {
+            display: flex;
+            align-self: stretch;
+            width: 100%;
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: @white-color;
+            border-bottom: 0px;
+            outline: none;
+
+            margin: 0px;
+            transition: border 0s;
+            &::-ms-clear { /* ie and edge remove clear */
+                display: none;
+            }
+    
+            &::-webkit-input-placeholder {
+                color: @white-color;
+            }
+    
+            &::-moz-placeholder {
+                color: @white-color;
+            }
+            /* Firefox 19+ */
+            &:-moz-placeholder {
+                color: @white-color;
+            }
+            /* Firefox 18- */
+            &:-ms-input-placeholder {
+                color: @white-color;
+            }
+    
+            &:focus {
+                outline: none;
+                box-shadow: none;
+                border: none;
+                border-bottom: 0px !important;
+                box-shadow: none !important;
+            }
+            &:active{
+                outline: none;
+                box-shadow: none;
+                border: none;
+            }
+        }
+    
+        .search-close-btn {
+            border-radius: 0px 5px 5px 0px;
+    
+            &::before {
+                .material_icon;
+                color: rgba(255, 255, 255,1);
+                content: "close";
+            }
+        }
+    }
+
+
+    .header-center-rigth .switch label input[type=checkbox]:checked + .lever {
+        background-color: #F2F2F2;
+    }
+    
+    .header-center-rigth .switch label input[type=checkbox]:checked + .lever:after {
+        color: @main-color;
+        left: 20px;
+        background-color: white;
+    }
+    
+    .header-center-rigth .switch label .lever {
+        content: "";
+        display: flex;
+        align-self: center;
+        position: relative;
+        width: 40px;
+        height: 17px;
+        background-color: @main-color-deep;
+        border-radius: 17px;
+        margin-right: 10px;
+        transition: background 0.3s ease;
+        margin: 0 16px;
+    }
+    
+    .header-center-rigth .switch label .lever:after {
+        .material_icon;
+        content: "perm_identity";
+        font-size: 20px;
+        line-height: 24px;
+        text-align: center;
+        color: @white-color;
+        /*content: "";*/
+        position: absolute;
+        display: inline-block;
+        width: 26px;
+        height: 26px;
+        background-color: @main-color;
+        border-radius: 26px;
+        box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+        left: -5px;
+        top: -4px;
+        transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease, color 0.3s ease;
+    }
+    .user-icon-circle {
+        border-radius: 50%;
+        border: 1px solid transparent;
+        width: 42px;
+        height: 42px;
+        margin-left: 15px;
+        display: flex;
+        align-self: center;
+        pointer-events: none;
+    }
+    
+    .header-notification-none-btn {
+    
+        &::before {
+            .material_icon;
+            content: "notifications_none";
+            font-size: 32px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+    }
+    
+    .header-notification-btn {
+    
+        &::before {
+            .material_icon;
+            content: "notifications_active";
+            font-size: 32px;
+            color: white;
+        }
+    }
+}
+
+.irotation{
+    @keyframes spin { 100% { transform: rotate(0deg); transform:rotate(-360deg); } }
+    i.rotatable{
+        animation:spin 2s linear infinite;
+    }
+}

@@ -1,0 +1,35 @@
+@import (reference) '../variables.less';
+
+html {
+    min-height: 100%;
+    min-width: 100%;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-grow: 1;
+}
+
+
+body, .body {
+    min-width: 100%;
+    min-height: 100%;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    .main_font();
+    color: @black-color;
+    background-color: rgb(242, 242, 242);
+}
+
+
+
+@import 'header.less';
+@import 'main.less';
+@import 'footer.less';
+@import 'left nav.less';
+@import 'mp adaptive.less';
+
