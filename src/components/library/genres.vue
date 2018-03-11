@@ -8,12 +8,16 @@
 
             </div>
         </div>
-        <div class="contentWrapper">
-            <div class="contentOnlyCenter">
+        <div class="content_wrapper">
+            <div class="content_only_center">
                 <ul class="collapsible popout" data-collapsible="expandable" ref='ul'>
                     <li v-for="genre in genres" :key="genre.id">
                         <div class="collapsible-header">
+                            <div>
                             {{genre.title}}<span class="gengre_count_of_lo">{{genre.count_of_lo}}</span><a class="actionLink" href="#">Перейти в раздел</a>
+                            </div>
+                            <i class="material-icons oncollapsed">expand_more</i>
+                            <i class="material-icons onexpanded">expand_less</i>
                         </div>
                         <div class="collapsible-body">
                             <div style="text-align:center; margin-bottom:20px;" v-html="genre.description">
@@ -23,8 +27,11 @@
                             <collapsible collapsible="expandable" v-show="genre.children && genre.children.length != 0">
                                 <li v-for="childgenre in genre.children" :key="childgenre.id">
                                     <div class="collapsible-header">
-                                        {{childgenre.title}}<span class="gengre_count_of_lo">{{childgenre.count_of_lo}}</span>
+                                        <div>{{childgenre.title}}<span class="gengre_count_of_lo">{{childgenre.count_of_lo}}</span>
                                         <a class="actionLink" href="#">Перейти в раздел</a>
+                                        </div>
+                                            <i class="material-icons oncollapsed">expand_more</i>
+                                            <i class="material-icons onexpanded">expand_less</i>
                                     </div>
                                     <div class="collapsible-body">
 
@@ -130,5 +137,29 @@ export default {
     font-size:12px;
     font-style: italic;
     color:gray;
+}
+.collapsible-header{
+    display: flex;
+    justify-content: space-between;
+    .oncollapsed, .onexpanded{
+        margin: 0px;
+        color:gray;
+    }
+
+
+    .onexpanded{        
+        display: none;        
+    }
+    .oncollapsed{
+        display: flex;        
+    }
+    &.active{
+        .onexpanded{
+            display: flex;
+        }
+        .oncollapsed{
+            display: none;
+        }   
+    }
 }
 </style>

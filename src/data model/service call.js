@@ -25,7 +25,6 @@ import test_genres from '@/data model/test data/test genres.js'
 
 var test_provider = {
     get(store_in_cache, url){
-        console.clear();
 
         var token = this.state.active_tokens.length;
         this.state.active_tokens.push(token);
@@ -33,7 +32,7 @@ var test_provider = {
         
         return test_provider_get(url, token, 0)       
         .then(res => {
-            
+            console.log('test_provider then 1',res);
             if(store_in_cache && !res.cache_date){
                 console.log('updating cache');
                 service_call_cache[url] = {cache_date: Date.now(), retult:Object.assign({},res)};
@@ -48,10 +47,14 @@ var test_provider = {
         });      
     },
     post(url, data){
+        console.log('post call ', url, data);
       return this.get(false, url);  
     },
     getCache(){
         return service_call_cache;
+    },
+    delete_from_cache(url){
+        service_call_cache[url] = undefined;
     },
     state:{
         active_tokens :[],
@@ -285,6 +288,9 @@ var real_provider = {
     },
     getCache(){
         return service_call_cache;
+    },
+    delete_from_cache(url){
+        service_call_cache[url] = undefined;
     },
     state:{
         active_tokens :[],

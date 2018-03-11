@@ -45,7 +45,7 @@
                     data-constrainWidth="false"
                     data-alignment="right"
                     data-gutter="0">
-                <span>{{current_user.title ? current_user.title : 'Читатель'}}</span> <img src="images/alice.png" class="user-icon-circle" v-if="current_user.picture != null" />
+                <span>{{current_user.name ? current_user.name : 'Читатель'}}</span> <img src="images/alice.png" class="user-icon-circle" v-if="current_user.picture != null" />
                 <i class="mdi mdi-36px mdi-account-circle empty_avatar"></i>
             </button>
 
@@ -65,11 +65,11 @@
                     <li><a href="#"><i class="mdi mdi-24px mdi-book-open-page-variant"></i>Продолжить чтение</a></li>
                 </ul>
                 <ul>
-                    <li><router-link to="/genres"><i class="material-icons">list</i>Жанры</router-link></li>
+                    <li :class="{active: $route.name=='genres'}"><router-link :to="{name:'genres'}"><i class="material-icons">list</i>Жанры</router-link></li>
                     <li><a href="#"><i class="material-icons">close</i>Lib.rus.ec</a></li>
                 </ul>
                 <ul>
-                    <li class="active"><router-link :to="{name:'profile'}"><i class="material-icons">perm_identity</i>Моя страница</router-link></li>
+                    <li :class="{active: $route.name=='profile'}"><router-link :to="{name:'profile'}"><i class="material-icons">perm_identity</i>Моя страница</router-link></li>
                     <li><a href="#"><i class="material-icons">group</i>Друзья</a></li>
                     <li><a href="#"><i class="material-icons">message</i>Сообщения</a></li>
                     <li><a href="#"><i class="material-icons">track_changes</i>Подписки</a></li>
@@ -92,7 +92,6 @@
                 <ul>
                     <li><a href="#"><i class="material-icons">add</i>Создать полку</a></li>
                 </ul>
-                <div style="color:red;">page name:{{inner_page_name}}</div>
             </nav>
             
         </div>
@@ -149,17 +148,11 @@ export default {
     return {
       connection_state: data_provider.state,
       current_user : User.get_current_user(),
-      inner_page_name:'',
     };
   },
   computed: {
       //current_user(){
       //    return User.get_current_user();
-      //}
-      //inner_page_name(){
-      //    if(this.$refs.inner_page != null && this.$refs.inner_page.$options != null)
-      //      return this.$refs.inner_page.$options.name;
-      //    return '';
       //}
   },
   methods: {
@@ -184,13 +177,11 @@ export default {
     $("#side-left-menu-activate").sideNav();
     $(this.$refs.update_button).tooltip({tooltip: 'Обновить'});
     $(this.$refs.current_user_mini_actions_btn_activator).dropdown();
+    $('ul.tabs').tabs();
 
     console.log(this.$refs.inner_page.$options.name);
   },
   watch: {
-    '$route'(to, from){
-        this.inner_page_name = this.$refs.inner_page.$options.name;
-    },
     'connection_state.is_connection_problems'(to, from) {
         var update_btn = this.$refs.update_button;
 

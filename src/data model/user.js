@@ -3,22 +3,35 @@ import data_provider from '@/data model/service call.js'
 
 export default class User {
     constructor() {
-      this.title = '';
+      this.name = '';
       this.id = 0;
       this.picture = null;
       this.is_logged_in = false;
     }
 
     clear(){
-      this.title = '';
+      this.name = '';
       this.id = 0;
       this.picture = null;
       this.is_logged_in = false;
     }
 
+    static clear_current_user(){
+      current_user.clear();
+      data_provider.delete_from_cache(queries.get_current_user());
+    }
+
     static load_current_user(use_cache = true){
       
-      return data_provider.get(use_cache, queries.get_current_user() + "?id=" + current_user.id);
+      return data_provider.get(use_cache, queries.get_current_user()).then(current_user_pkg => {
+        console.log('user get_current_user then 1', current_user_pkg);
+        if(current_user_pkg.is_ok && current_user_pkg.user_info){
+          
+          current_user.id = current_user_pkg.user_info.user_id;
+          current_user.name = current_user_pkg.user_info.name;
+          console.log('user get_current_user - current user updated',current_user, current_user_pkg);
+        }
+      });
     }
 
     static check_login(login, pwd){
@@ -27,14 +40,14 @@ export default class User {
       .then(loaded => {
         //current_user = loaded.user;
         if(loaded.is_ok){
-          current_user.clear();
+          User.clear_current_user();
           current_user.id = loaded.user_id;
           current_user.is_logged_in = true;
         }
-        console.log('handler in user class ', loaded);return loaded;
-      })
-      .catch(error =>  {current_user.clear(); console.log('catch in User login'); return Promise.reject(error);});
-      
+        else return Promise.reject(loaded);
+        return loaded;
+      })      
+      .catch(error =>  {current_user.clear(); console.log('catch in User login'); return Promise.reject(error);});      
     }
 
     static logout(){
@@ -74,11 +87,12 @@ export default class User {
 
   var queries = {
     get_current_user(){
-      return "/user/get_user.json";
+      return "/user/data/account_info_get.json";
     },
     check_login(){
       return "/user/login.json";
     },
+    
     logout(){
       return "/user/logout.json";
     }

@@ -1,0 +1,117 @@
+@import (reference) '../variables.less';
+
+.content-type-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: transparent;
+    box-shadow: none;
+    height: auto;
+
+    ul.tabs {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        display: flex;
+        align-self: center;
+        width: auto;
+        height: auto;
+        flex-direction: row;
+        background-color: transparent;
+        color: black;
+
+        li.tab {
+            height: auto;
+            width: 120px;
+
+            a {
+                font-size: 20px;
+                color: @main-color;
+                .transitionColorForTheme();
+                padding: 0 5px;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
+            &.disabled a {
+                color: @disabled-action !important;
+                cursor:not-allowed;
+
+                &:hover {
+                    color: @disabled-action !important;
+                }
+            }
+        }
+
+        .indicator {
+            background-color: @main-color;
+            .transitionBGColorForTheme();
+        }
+    }
+}
+
+.content-type-filter {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: stretch;
+    flex-grow: 0;
+    letter-spacing: 0px;
+
+    li {
+        width: 160px;
+        height: 48px;
+        flex-grow: 0;
+        display: flex;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        font-size: 24px;
+
+        button {
+            display: flex;
+            flex-direction: row;
+            flex-grow: 1;
+            justify-content: center;
+            text-align: center;
+            margin: 0;
+            /*margin-left: -1px;
+            margin-right: -1px;*/
+            padding: 0;
+            font-family: Roboto;
+            font-weight: 300;
+            text-transform: uppercase;
+            align-items: center;
+            border: none;
+            background: none;
+            color: @action-color;
+            transition:color 0.5s;
+            position: relative;
+
+            &:after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 2px;
+                width: 0%;
+                transition: width ease 0.5s;
+                background: @main-color;
+                .transitionBGColorForTheme();
+            }
+
+
+            &.active {
+                color: @main-color;
+
+                &:after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
